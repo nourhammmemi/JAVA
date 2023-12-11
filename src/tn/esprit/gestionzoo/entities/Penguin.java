@@ -1,6 +1,9 @@
 package tn.esprit.gestionzoo.entities;
 
-public class Penguin extends Aquatic{
+import tn.esprit.gestionzoo.interfaces.Carnivor;
+import tn.esprit.gestionzoo.entities.enums.Food;
+
+public class Penguin extends Aquatic implements Carnivor<Food> {
     private float swimmingDepth;
 
     public Penguin() {
@@ -9,6 +12,12 @@ public class Penguin extends Aquatic{
            super(family,name,age,isMammal,habitat);
            this.swimmingDepth=swimmingDepth;
         }
+    public void eatMeat(Food meat){
+        if(meat == Food.MEAT || meat==Food.BOTH){
+            System.out.println("The animal is aquatic");
+        }else
+            System.out.println("The animal is not aquatic");
+    }
     @Override
     public String toString() {
 

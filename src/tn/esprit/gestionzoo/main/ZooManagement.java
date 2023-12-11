@@ -1,150 +1,119 @@
 package tn.esprit.gestionzoo.main;
 
+import tn.esprit.gestionzoo.entities.Animal;
+import tn.esprit.gestionzoo.entities.Zoo;
+import tn.esprit.gestionzoo.interfaces.*;
+import tn.esprit.gestionzoo.entities.enums.Food;
 import tn.esprit.gestionzoo.entities.*;
-import tn.esprit.gestionzoo.exceptions.InvalidAgeException;
-import tn.esprit.gestionzoo.exceptions.ZooFullException;
-//import java.util.Scanner;
+
+import java.util.Scanner;
 
 public class ZooManagement {
     public static void  main (String[] args)
-    {    // scanner =permet de lire l'entrée de l'utilisateur à partir de la console.
+    {
+        Scanner scanner = new Scanner(System.in);
 
-       // int nbrCages = 20;
-      //  String zooName ="my zoo";
-      //  System.out.println(zooName +" comporte "+nbrCages+" cages");
-       // Scanner scanner = new Scanner(System.in);
+        System.out.print("Entrez le nombre de cages : ");
+        int nbrCages = scanner.nextInt();
 
-       // System.out.println(" entrer le nombre de cages du zoo :");
-      //  int  nbrCages = scanner.nextInt();
+        scanner.nextLine(); // Consume the newline character...
 
-      //  System.out.println("entrer le nom du zoo :");
-      //  String zooName =scanner.next();
+        System.out.print("Entrez le nom du zoo : ");
+        String zooName = scanner.nextLine();
 
-      //  System.out.println(zooName +" comporte "+nbrCages+" cages" );
+        System.out.println(zooName + " comporte " + nbrCages + " cages ");
 
 
-       //lion.age = 5;
-       // lion.family = "Cats";
-      //lion.isMammal = true;
-
-      // Zoo myzoo = new Zoo();
-    //   myzoo.name="Frigia";
-     //  myzoo.city="Hammamet";
-      // myzoo.nbrCages=4;
-     //  myzoo.animals= new tn.esprit.gestionzoo.entities.Animal[25];
+        Animal lion = new Animal("L","Lion1",7,true);
+        Animal lion1 = new Animal("L2","Lion2",6,true);
 
 
-        Animal lion = new Animal();
-        lion.setName("Simba");
-        try {
-            lion.setAge(8);
-        }
-        catch ( InvalidAgeException e) {
-            System.out.println(e.getMessage());
-        }
-        lion.setFamily("Cats");
-        lion.setIsMammal(true);
+        Zoo myZoo = new Zoo("zoo","sousse") ;
 
-        Zoo myzoo = new Zoo("Frigia", "Hammamet");
-        Zoo notMyZoo = new Zoo("Belvedere", "Tunis");
+        // Création d'animaux
+        Animal pig = new Animal("Pi", "Pig", 5, true);
+        Animal penguin = new Animal("Pen", "Penguin", 10, true);
 
+        int indexLion = myZoo.searchAnimal(lion);
+        int indexLion1 = myZoo.searchAnimal(lion1);
 
-        Animal dog = new Animal("Canine", "Pixie", 1, true);
-
-
-        try {
-            myzoo.addAnimal(lion);
-        } catch (ZooFullException e) {
-            System.out.println(e.getMessage());
-        } finally {
-            System.out.println(myzoo.getName() + " contient " + myzoo.getNbrAnimals() + " animaux");
-        }
-        try {
-            myzoo.addAnimal(dog);
-        } catch (ZooFullException e) {
-            System.out.println(e.getMessage());
-        } finally {
-            System.out.println(myzoo.getName() + " contient " + myzoo.getNbrAnimals() + " animaux");
+        if (indexLion != -1) {
+            System.out.println("Lion 1 trouvé à l'indice " + indexLion);
+        } else {
+            System.out.println("Lion 1 non trouvé.");
         }
 
-        myzoo.displayAnimals();
-
-        System.out.println(myzoo.searchAnimal(dog));
-        Animal dog2 = new Animal("Canine", "Dido", 3, true);
-        System.out.println(myzoo.searchAnimal(dog2));
-
-//           System.out.println(myZoo.removeAnimal(dog));
-        myzoo.displayAnimals();
-
-
-        System.out.println(myzoo);
-
-        try {
-            myzoo.addAnimal(lion);
-        } catch (ZooFullException e) {
-            System.out.println(e.getMessage());
-        } finally {
-            System.out.println(myzoo.getName() + " contient " + myzoo.getNbrAnimals() + " animaux");
+        if (indexLion1 != -1) {
+            System.out.println("Lion 2 trouvé à l'indice " + indexLion1);
+        } else {
+            System.out.println("Lion 2 non trouvé.");
         }
-       // myzoo.displayAnimals();
-
-       // System.out.println(myzoo.searchAnimal(dog));
-       // Animal dog2 = new Animal("Canine", "Pixie", 1, true);
-      // System.out.println(myzoo.searchAnimal(dog2));
-
-       // System.out.println(myzoo.removeAnimal(dog));
-      // myzoo.displayAnimals();
-
-        System.out.println(myzoo);
-
-        //System.out.println(dog);
 
 
-      //  Aquatic aquatic = new Aquatic("Fish", "Sardine", 2, true, "Sea");
-      //  Terrestrial terrestrial = new Terrestrial("Panda", "Narla", 4, true, 2);
-      //  Dolphin dolphin = new Dolphin("Delphinidae", "Flipper", 5, true, "Ocean", 14.5f);
-      //  Penguin penguin = new Penguin("Spheniscidae", "Skipper", 3, true, "Ocean", 25.3f);
+        // Création d'animaux
+        Animal lion3 = new Animal("YYY", "Lion", 2, true);
+        Animal elephant = new Animal("EEE", "Elephant", 4, true);
+        Animal giraffe = new Animal("GGG", "Giraffe", 5, false);
+
+        Zoo zoo1 = new Zoo("tn.esprit.gestionzoo.entities.Zoo 1","TUNIS"); // I shouldn't add the 3rd param
+        Zoo zoo2 = new Zoo("tn.esprit.gestionzoo.entities.Zoo 2","SOUSSE");
+
+        // Vérification si les zoo sont pleins
+        System.out.println("tn.esprit.gestionzoo.entities.Zoo 1 est plein : " + zoo1.isZooFull()); // It should be false
+        System.out.println("tn.esprit.gestionzoo.entities.Zoo 2 est plein : " + zoo2.isZooFull()); // It should be false too
+
+        // Comparaison des zoo
+        Zoo zooWithMostAnimals = Zoo.comparerZoo(zoo1, zoo2);
+        System.out.println("Le zoo avec le plus d'animaux est : " + zooWithMostAnimals.getName());
+
+        //Aquatic aqua1 = new Aquatic();
+        Dolphin dolphin1 = new Dolphin();
+        Penguin penguin1 = new Penguin();
+
+        //Aquatic aqua2 = new Aquatic("AquaticFamily", "AquaticAnimal", 10, true, "AquaticHabitat");
+        Dolphin dol2 = new Dolphin("DolphinFamily", "Dolphin", 5, true, "Ocean", 20.0f);
+        Penguin pen2 = new Penguin("PenguinFamily", "Penguin", 3, true, "Antarctica", 10.0f);
+
+        // Print the objects
+        //System.out.println(aqua2);
+        System.out.println(dol2);
+        System.out.println(pen2);
+
+        //aqua2.swim();
+        dol2.swim();
+        pen2.swim();
+
+        Zoo myZoo2 = new Zoo("Zooooo","Tunis");
 
 
-       // System.out.println(aquatic);
-      //  System.out.println(terrestrial);
-      //  System.out.println(dolphin);
-      //  System.out.println(penguin);
-      //  aquatic.swim();
-       // dolphin.swim();
+        Aquatic penguinn = new Penguin();
+        Aquatic dolphin = new Dolphin();
 
-        Dolphin d1 = new Dolphin();
-        d1.setSwimmingSpeed(15.5f);
-        Dolphin d2 = new Dolphin();
-        d2.setSwimmingSpeed(16.5f);
+        myZoo2.addAquaticAnimal(penguinn);
+        myZoo2.addAquaticAnimal(dolphin);
 
 
+        for (Aquatic animal : myZoo2.AquaticAnimals) {
+            if (animal != null) {
+                animal.swim();
+            }
+        }
+        Aquatic aquaticAnimal = new Aquatic("AquaticFamily", "AquaticAnimal", 10, true, "AquaticHabitat");
+
+        // Test the eatMeat method with Carnivore interface
+        System.out.println("Testing eatMeat method:");
+        aquaticAnimal.eatMeat(Food.MEAT); // This should print "This aquatic animal is eating meat."
+        aquaticAnimal.eatMeat(Food.PLANT); // This should print "This aquatic animal does not eat meat."
+
+        // Create an instance of Terrestrial
+        Terrestrial terrestrialAnimal = new Terrestrial("TerrestrialFamily", "TerrestrialAnimal", 8, true, 4);
+
+        // Test the eatPlantAndMeat method with Omnivore interface
+        System.out.println("\nTesting eatPlantAndMeat method:");
+        terrestrialAnimal.eatPlantAndMeat(Food.BOTH); // This should print "This terrestrial animal is eating both plants and meat."
+        terrestrialAnimal.eatPlantAndMeat(Food.MEAT); // This should print "This terrestrial animal does not eat both plants and meat."
 
 
-        myzoo.addAquaticAnimal(d1);
-        myzoo.addAquaticAnimal(d2);
-
-
-
-        Penguin p1 = new Penguin();
-        p1.setSwimmingDepth(40.40f);
-        Penguin p2 = new Penguin();
-        p2.setSwimmingDepth(60.60f);
-
-        myzoo.addAquaticAnimal(p1);
-        myzoo.addAquaticAnimal(p2);
-
-        myzoo.addAquaticAnimal(new Penguin());
-
-       // for (int i = 0; i < myzoo.getNbrAquatics(); i++) {
-        //    Aquatic[] aquatics = myzoo.getAquaticAnimals();
-        //    aquatics[i].swim();
-       // }
-
-
-       // myzoo.displayNumberOfAquaticsByType();
-
-       // System.out.println(myzoo.maxPenguinSwimmingDepth());
-
+        scanner.close();
     }
 }

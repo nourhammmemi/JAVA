@@ -1,12 +1,23 @@
 package tn.esprit.gestionzoo.entities;
 
-public abstract non-sealed class Aquatic extends Animal {
+import tn.esprit.gestionzoo.interfaces.Carnivor;
+import tn.esprit.gestionzoo.entities.enums.Food;
 
-    private String habitat;
+public  class Aquatic extends Animal implements Carnivor<Food> {
+
+    protected String habitat;
 
   public Aquatic(){
+      super();
+      System.out.println("Aquatic");
 
    }
+    public void eatMeat(Food meat){
+        if(meat == Food.MEAT || meat==Food.BOTH){
+            System.out.println("The animal is aquatic");
+        }else
+            System.out.println("The animal is not aquatic");
+    }
    public Aquatic(String family, String name, int age, boolean isMammal,String habitat)
    {
        super(family,name,age,isMammal);
@@ -16,8 +27,8 @@ public abstract non-sealed class Aquatic extends Animal {
     public String toString() {
         return super.toString() + ", habitat:" + habitat;
     }
-    public abstract void swim();
-  //  {System.out.println("This aquatic animal is swimming.");}
+    public  void swim()
+    {System.out.println("This aquatic animal is swimming.");}
     public String getHabitat() {
       return habitat;}
 

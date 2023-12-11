@@ -2,7 +2,7 @@ package tn.esprit.gestionzoo.entities;
 import tn.esprit.gestionzoo.exceptions.InvalidAgeException;
 
 
-public sealed class Animal permits Aquatic, Terrestrial{
+public class Animal {
    private String family,name;
    private int age;
    private boolean isMammal;

@@ -1,7 +1,9 @@
 package tn.esprit.gestionzoo.entities;
 import tn.esprit.gestionzoo.exceptions.ZooFullException;
+
 public class Zoo {
     static final int nbrCages = 25;
+    public Iterable<? extends Aquatic> AquaticAnimals;
     private Animal[] animals;
     private String name;
     private String city;
@@ -80,7 +82,7 @@ public class Zoo {
         this.nbrAnimals = nbrAnimals;
     }
 
-    static Zoo comparerZoo(Zoo z1, Zoo z2) {
+    public static Zoo comparerZoo(Zoo z1, Zoo z2) {
         if (z1.nbrAnimals > z2.nbrAnimals)
             return z1;
         return z2;
