@@ -1,3 +1,5 @@
+package interfaces;
+
 public interface IGestion<T> {
 
     public void ajouterEmploye(T t);

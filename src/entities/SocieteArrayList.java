@@ -1,7 +1,13 @@
+package entities;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Comparator;
+
+import entities.Employe;
+import interfaces.IGestion;
+
 
 public class SocieteArrayList implements IGestion<Employe>{
 

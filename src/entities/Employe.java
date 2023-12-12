@@ -1,4 +1,4 @@
-
+package entities;
 public class Employe {
 
     public int id;
@@ -8,6 +8,11 @@ public class Employe {
     public int grade;
 
 
+    public Employe(int i, String j,String k) {
+        this.id=i;
+        this.nom=j;
+        this.prenom=k;
+    }
     public Employe(int id, String nom, String prenom, String nomDepartement, int grade) {
         this.id = id;
         this.nom = nom;
@@ -62,7 +67,7 @@ public class Employe {
         return getId()==employe.getId() && getNom()==employe.getNom();
     }
     public String toString(){
-        return "Employe \nid : "+id+" Grade : "+grade+" nom : "+nom+" prenom : "+prenom+" departement : "+NomDepartement;
+        return "entities.Departement.Employe \nid : "+id+" Grade : "+grade+" nom : "+nom+" prenom : "+prenom+" departement : "+NomDepartement;
     }
 
 }

@@ -1,9 +1,11 @@
-import java.util.List;
-import java.util.ArrayList;
-import java.util.TreeSet;
+package main;
+import entities.*;
+import java.util.*;
+
+
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         DepartementHashSet departement1 = new DepartementHashSet();
 
@@ -32,6 +34,33 @@ public class Main {
         for (Departement departement : departementsTries) {
             System.out.println(departement);
         }
-    }
+
+
+        Employe emp1 = new Employe(1, "hamza", "baloumi");
+        Employe emp2 = new Employe(2, "imen","benali");
+
+        AffectationHashMap affectationHashMap = new AffectationHashMap();
+
+        affectationHashMap.ajouterEmployeDepartement(emp1, departe1);
+        affectationHashMap.ajouterEmployeDepartement(emp2, departe2);
+
+        affectationHashMap.afficherEmployesEtDepartements();
+
+        affectationHashMap.supprimerEmploye(emp1);
+
+        affectationHashMap.supprimerEmployeEtDepartement(emp2, departe2);
+
+        affectationHashMap.afficherEmployes();
+
+        affectationHashMap.afficherDepartements();
+
+        affectationHashMap.ajouterEmployeDepartement(emp1, departe1);
+        affectationHashMap.ajouterEmployeDepartement(emp1, departe2);
+
+        affectationHashMap.afficherEmployesEtDepartements();
+
+        System.out.println("Rechercher employé emp1 : " + affectationHashMap.rechercherEmploye(emp1));
+
 
     }
+}

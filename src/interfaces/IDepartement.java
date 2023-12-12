@@ -1,3 +1,5 @@
+package interfaces;
+
 import java.util.TreeSet;
 public interface IDepartement<T> {
 
